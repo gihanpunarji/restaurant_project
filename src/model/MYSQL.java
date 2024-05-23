@@ -9,8 +9,8 @@ public class MYSQL {
 
     static Connection c;
     private static final String username = "root";
-    private static final String db = "restaurant_db";
-    private static final String password = "Gamage0212#1122";
+    private static final String db = "resturant_db";
+    private static final String password = "7sandun770";
 
     public static Statement createConnection() throws Exception {
         if (c == null) {
