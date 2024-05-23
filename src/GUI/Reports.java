@@ -36,17 +36,17 @@ public class Reports extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(474, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(429, 429, 429)
                 .addComponent(jButton1)
-                .addGap(459, 459, 459))
+                .addContainerGap(504, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(192, 192, 192)
+                .addGap(198, 198, 198)
                 .addComponent(jButton1)
-                .addContainerGap(411, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
