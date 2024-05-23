@@ -105,8 +105,9 @@ public class Splash extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Splash().setVisible(true);
-                Cashier c = new Cashier();
+                Splash sp = new Splash();
+                sp.setVisible(true);
+                SignIn signIn = new SignIn();
 
                 new Thread(() -> {
                     for (int i = 0; i <= 100; i++) {
@@ -117,7 +118,8 @@ public class Splash extends javax.swing.JFrame {
                             e.printStackTrace();
                         }
                     }
-                    c.setVisible(true);
+                    signIn.setVisible(true);
+                    sp.dispose();
                 }).start();
             }
         });
