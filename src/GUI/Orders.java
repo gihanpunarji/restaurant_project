@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
+import model.MYSQL;
+
 /**
  *
  * @author Sunet
@@ -143,6 +147,14 @@ public class Orders extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void loadOrders(String query){
+        try {
+            ResultSet search = MYSQL.search(query);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
