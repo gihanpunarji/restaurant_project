@@ -1,9 +1,15 @@
 package GUI;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.MYSQL;
+import model.SupplierBean;
 
 /**
  *
@@ -11,12 +17,19 @@ import model.MYSQL;
  */
 public class SupplierManagement extends javax.swing.JPanel {
 
+    private HashMap<String, String> companyMap = new HashMap<>();
+    private HashMap<String, SupplierBean> supplierMap = new HashMap<>();
+    private static String mainQuery = "SELECT * FROM `supplier` INNER JOIN `company` "
+                    + "ON `supplier`.`company_id` = `company`.`company_id`";
+
+
     /**
      * Creates new form SupplierManagement
      */
     public SupplierManagement() {
         initComponents();
         loadCompany();
+        loadSupplierTable(mainQuery);
     }
 
     /**
@@ -42,8 +55,6 @@ public class SupplierManagement extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -51,6 +62,9 @@ public class SupplierManagement extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel10 = new javax.swing.JLabel();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(223, 120, 97)));
 
@@ -96,12 +110,11 @@ public class SupplierManagement extends javax.swing.JPanel {
 
         jButton3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jButton3.setText("Add new Supplier");
-
-        jButton4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton4.setText("Update the Supplier");
-
-        jButton5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton5.setText("Delete the Supplier");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,9 +146,7 @@ public class SupplierManagement extends javax.swing.JPanel {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2))
-                    .addComponent(jLabel9)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel9))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -166,11 +177,7 @@ public class SupplierManagement extends javax.swing.JPanel {
                     .addComponent(jButton2))
                 .addGap(45, 45, 45)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
-                .addContainerGap())
+                .addGap(215, 215, 215))
         );
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -224,6 +231,16 @@ public class SupplierManagement extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -235,6 +252,27 @@ public class SupplierManagement extends javax.swing.JPanel {
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel10.setText("Good Recieve Note (GRN)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -243,13 +281,22 @@ public class SupplierManagement extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -257,6 +304,7 @@ public class SupplierManagement extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -265,8 +313,12 @@ public class SupplierManagement extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addGap(31, 31, 31)))
-                        .addComponent(jScrollPane1))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, 0)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -280,15 +332,55 @@ public class SupplierManagement extends javax.swing.JPanel {
         //Method Referencing
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        registerSupplier();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if (evt.getClickCount() == 2) {
+            int selectedRow = jTable1.getSelectedRow();
+
+            if (selectedRow != -1) {
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                String mobile = model.getValueAt(selectedRow, 0).toString();
+                System.out.println(mobile);
+
+                SupplierBean supplierBean = supplierMap.get(mobile);
+
+                if (supplierBean != null) {
+                    SupplierDetailView supplierDetailView = new SupplierDetailView(supplierBean, ()->{
+                        loadSupplierTable(mainQuery);
+                    });
+                    supplierDetailView.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error: Supplier data not found.");
+                }
+
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String searchText = jTextField1.getText();
+        if(searchText.equals("")) {
+            loadSupplierTable(mainQuery);
+        } else {
+            loadSupplierTable(mainQuery + "WHERE `supplier_mobile` = '"+searchText+"' OR `fname` = '"+searchText+"' OR `lname` = '"+searchText+"'");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -300,7 +392,9 @@ public class SupplierManagement extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -310,16 +404,94 @@ public class SupplierManagement extends javax.swing.JPanel {
     private void loadCompany() {
         try {
             ResultSet search = MYSQL.search("SELECT * FROM `company`");
-            DefaultComboBoxModel model = (DefaultComboBoxModel) jComboBox1.getModel();
-            jComboBox1.removeAllItems();
-            
+
             Vector v = new Vector();
-            while(search.next()) {
+            v.add("Select");
+
+            while (search.next()) {
                 v.add(search.getString("companyname"));
+                companyMap.put(search.getString("companyname"), search.getString("company_id"));
             }
+            DefaultComboBoxModel model = (DefaultComboBoxModel) jComboBox1.getModel();
+            model.removeAllElements();
+
             model.addAll(v);
+            jComboBox1.setSelectedIndex(0);
+
         } catch (Exception ex) {
             ex.printStackTrace();
+
+        }
+
+    }
+    
+    private void loadSupplierTable(String query) {
+        try {
+            ResultSet search = MYSQL.search(query);
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            while (search.next()) {
+                String supplierMobile = search.getString("supplier_mobile");
+                String fname = search.getString("fname");
+                String lname = search.getString("lname");
+                String company = search.getString("companyname");
+                String regDate = search.getString("reg_date");
+
+                Vector v = new Vector();
+                v.add(supplierMobile);
+                v.add(fname);
+                v.add(lname);
+                v.add(company);
+                
+                SupplierBean supplierBean = new SupplierBean();
+
+                supplierBean.setMobile(supplierMobile);
+                supplierBean.setFname(fname);
+                supplierBean.setLname(lname);
+                supplierBean.setCompany(company);
+                supplierBean.setRegDate(regDate);
+                
+                supplierMap.put(supplierMobile, supplierBean);
+
+                model.addRow(v);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    private String currentDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+
+        return String.valueOf(dateFormat.format(date));
+    }
+
+    private void registerSupplier() {
+
+        String currentDate = currentDate();
+        String fName = jTextField2.getText();
+        String lName = jTextField3.getText();
+        String mobile = jTextField4.getText();
+        String company = jComboBox1.getSelectedItem().toString();
+
+        if (fName.equals("")) {
+            JOptionPane.showMessageDialog(this, "First Name Required");
+        } else if (lName.equals("")) {
+            JOptionPane.showMessageDialog(this, "Last Name Required");
+        } else if (mobile.equals("")) {
+            JOptionPane.showMessageDialog(this, "Mobile Required");
+        } else if (jComboBox1.getSelectedItem().equals("Select")) {
+            JOptionPane.showMessageDialog(this, "Select a company");
+        } else {
+
+            MYSQL.iud("INSERT INTO `supplier` (`supplier_mobile`, `fname`, `lname`, `company_id`, `reg_date`)"
+                    + "VALUES ('" + mobile + "', '" + fName + "', '" + lName + "', '" + companyMap.get(company) + "', '" + currentDate + "')");
+            JOptionPane.showMessageDialog(this, "Supplier registartion Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+            loadSupplierTable("SELECT * FROM `supplier` INNER JOIN `company` "
+                    + "ON `supplier`.`company_id` = `company`.`company_id`");
         }
 
     }
