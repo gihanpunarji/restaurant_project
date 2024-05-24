@@ -4,6 +4,14 @@
  */
 package GUI;
 
+import static GUI.Splash.jProgressBar1;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.util.HashMap;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import model.MYSQL;
+import java.sql.ResultSet;
+
 /**
  *
  * @author Sunet
@@ -15,6 +23,56 @@ public class RegisterCashier extends javax.swing.JFrame {
      */
     public RegisterCashier() {
         initComponents();
+        loadCity();
+    }
+    private HashMap<String, Integer> cityMap = new HashMap<>();
+
+    private void loadCity() {
+
+        try {
+            Vector v = new Vector();
+
+            ResultSet resultset = MYSQL.search("SELECT * FROM city");
+
+            while (resultset.next()) {
+                String cityName = resultset.getString("cityname");
+                int cityId = Integer.parseInt(resultset.getString("city_id"));
+                v.add(cityName);
+
+                cityMap.put(cityName, cityId);
+            }
+            DefaultComboBoxModel model = (DefaultComboBoxModel) jComboBox1.getModel();
+            jComboBox1.removeAll();
+            model.addElement("Select");
+            model.addAll(v);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void registerCashier() {
+//        String fname = jTextField1.getText();
+//        String lname = jTextField2.getText();
+//        String nic = jTextField3.getText();
+//        String mobile = jTextField4.getText();
+        String ad1 = jTextField6.getText();
+        String ad2 = jTextField7.getText();
+//        String pw1 = String.valueOf(jPasswordField1.getPassword());
+//        String pw2 = String.valueOf(jPasswordField2.getPassword());
+        int cityId = cityMap.get(String.valueOf(jComboBox1.getSelectedItem()));
+
+//        Date date = new Date();
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        System.out.println(cityId);
+//        try {
+//            MYSQL.iud("INSERT INTO employee (fname,lname,nic,mobile,password,date,employee_type_id,status_id,address_id) "
+//                    + "VALUES('" + fname + "','" + lname + "','" + nic + "','" + mobile + "','" + ad1 + "','" + ad2 + "','" + pw1 + "','" + format.format(date) + "','2','1','" + cityId + "')");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -99,7 +157,6 @@ public class RegisterCashier extends javax.swing.JFrame {
         jTextField9.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 13)); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 13)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 15)); // NOI18N
         jLabel11.setText("City");
@@ -227,14 +284,24 @@ public class RegisterCashier extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         // TODO add your handling code here:
+        registerCashier();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
+   public static void main(String args[]) {
+        FlatLightLaf.setup();
 
-
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new RegisterCashier().setVisible(true);
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
