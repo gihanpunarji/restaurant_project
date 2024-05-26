@@ -6,10 +6,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.MYSQL;
 
-/**
- *
- * @author gihanpunarji
- */
 public class SignIn extends javax.swing.JFrame {
 
     public SignIn() {

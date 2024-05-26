@@ -4,6 +4,11 @@
  */
 package GUI;
 
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import model.MYSQL;
+
 /**
  *
  * @author Sunet
@@ -16,6 +21,10 @@ public class RegisterWaiter extends javax.swing.JFrame {
     public RegisterWaiter() {
         initComponents();
     }
+    
+   
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
