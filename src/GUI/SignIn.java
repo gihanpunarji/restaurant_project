@@ -165,7 +165,7 @@ public class SignIn extends javax.swing.JFrame {
                             Admin admin = new Admin();
                             admin.setVisible(true);
                             this.dispose();
-                        } else if (search.getInt("employee_type_id") == 2) {
+                        } else if (search.getInt("employee_type_id") == 2) { 
                             Cashier cashier = new Cashier();
                             cashier.setVisible(true);
                             this.dispose();
