@@ -8,6 +8,7 @@ package GUI;
  *
  * @author Sunet
  */
+//kosa
 public class Billing extends javax.swing.JPanel {
 
     /**
