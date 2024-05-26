@@ -10,10 +10,6 @@ import model.MYSQL;
 import model.SessionManager;
 import model.UserBean;
 
-/**
- *
- * @author gihanpunarji
- */
 public class SignIn extends javax.swing.JFrame {
 
     public SignIn() {
