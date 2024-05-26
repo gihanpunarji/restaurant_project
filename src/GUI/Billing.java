@@ -14,6 +14,8 @@ public class Billing extends javax.swing.JPanel {
     /**
      * Creates new form Billing
      */
+    //kosa
+    
     public Billing() {
         initComponents();
     }
