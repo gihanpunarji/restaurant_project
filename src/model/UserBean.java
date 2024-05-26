@@ -1,14 +1,14 @@
-
 package model;
 
 public class UserBean {
-  
+
     private int userId;
     private String userFname;
     private String userLname;
     private String nic;
     private String mobile;
     private int userType;
+    private int userStatus;
 
     public int getUserId() {
         return userId;
@@ -16,6 +16,14 @@ public class UserBean {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
     }
 
     public String getUserFname() {
@@ -57,6 +65,5 @@ public class UserBean {
     public void setUserType(int userType) {
         this.userType = userType;
     }
-    
-    
+
 }

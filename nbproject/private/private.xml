@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/supun/Documents/NetBeansProjects/restaurant_project/src/GUI/Splash.java</file>
+            <file>file:/C:/Users/supun/Documents/NetBeansProjects/restaurant_project/src/GUI/RegisterCashier.java</file>
+            <file>file:/C:/Users/supun/Documents/NetBeansProjects/restaurant_project/src/GUI/Cashier.java</file>
+            <file>file:/C:/Users/supun/Documents/NetBeansProjects/restaurant_project/src/GUI/Admin.java</file>
+            <file>file:/C:/Users/supun/Documents/NetBeansProjects/restaurant_project/src/GUI/Users.java</file>
+            <file>file:/C:/Users/supun/Documents/NetBeansProjects/restaurant_project/src/model/CustomTableExample.java</file>
+            <file>file:/C:/Users/supun/Documents/NetBeansProjects/restaurant_project/src/model/MYSQL.java</file>
+            <file>file:/C:/Users/supun/Documents/NetBeansProjects/restaurant_project/src/model/UserBean.java</file>
+            <file>file:/C:/Users/supun/Documents/NetBeansProjects/restaurant_project/src/GUI/SignIn.java</file>
+        </group>
     </open-files>
 </project-private>
