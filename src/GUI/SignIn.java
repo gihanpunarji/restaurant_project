@@ -1,10 +1,14 @@
 package GUI;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.MYSQL;
+import model.SessionManager;
+import model.UserBean;
 
 public class SignIn extends javax.swing.JFrame {
 
@@ -147,6 +151,30 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
+    private static boolean authenticateUser(String nic, String password) {
+        try {
+            ResultSet resultSet = MYSQL.search("SELECT * FROM `employee` WHERE `nic` = '" + nic + "' AND `password` = '" + password + "'");
+
+            if (resultSet.next()) {
+                UserBean user = new UserBean();
+
+                user.setUserId(resultSet.getInt("employee_id"));
+                user.setUserFname(resultSet.getString("fname"));
+                user.setUserLname(resultSet.getString("lname"));
+                user.setNic(resultSet.getString("nic"));
+                user.setMobile(resultSet.getString("mobile"));
+                user.setUserType(resultSet.getInt("employee_type_id"));
+                user.setUserStatus(resultSet.getInt("status_id"));
+
+                SessionManager.setCurrentUser(user);
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     private void signIn() {
         String nic = jTextField1.getText();
         String password = String.valueOf(jPasswordField1.getPassword());
@@ -155,32 +183,34 @@ public class SignIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Enter your NIC");
         } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Enter your Password");
-        } else {
-            try {
-                ResultSet search = MYSQL.search("SELECT * FROM `employee` WHERE `nic` = '" + nic + "' AND `password` = '" + password + "'");
+        } else if (authenticateUser(nic, password)) {
 
-                if (search.next()) {
-                    if (search.getInt("status_id") == 1) {
-                        if (search.getInt("employee_type_id") == 1) {
-                            Admin admin = new Admin();
-                            admin.setVisible(true);
-                            this.dispose();
-                        } else if (search.getInt("employee_type_id") == 2) { 
-                            Cashier cashier = new Cashier();
-                            cashier.setVisible(true);
-                            this.dispose();
-                        }
-//                      // add else part if new usertype is added to the system
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Inactive User", "Warning", JOptionPane.WARNING_MESSAGE);
+            System.out.println("Success Login");
+
+            UserBean currentUser = SessionManager.getCurrentUser();
+            System.out.println("Welcome" + currentUser.getUserFname());
+
+            int userType = currentUser.getUserType();
+            int userStatus = currentUser.getUserStatus();
+
+                if (userStatus == 1) {
+                    if (userType == 1) {
+                        Admin admin = new Admin();
+                        admin.setVisible(true);
+                        this.dispose();
+                    } else if (userType == 2) {
+                        Cashier cashier = new Cashier();
+                        cashier.setVisible(true);
+                        this.dispose();
                     }
+//                      // add else part if new usertype is added to the system
                 } else {
-                    JOptionPane.showMessageDialog(this, "Invalid Details", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Inactive User", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
 
-            } catch (Exception ex) {
-                Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Details", "Warning", JOptionPane.WARNING_MESSAGE);
+
         }
     }
 }
