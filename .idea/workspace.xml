@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5518a5bf-9937-4c07-81ce-be570c6452e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/GUI/NewItemType.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/NewItemType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Billing.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Billing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Billing.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Billing.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Cashier$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Cashier$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Cashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Cashier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Cashier.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Cashier.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Profile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/Profile.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/Profile.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/SupplierManagement.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Billing.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Billing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Cashier.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Cashier.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Cashier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Profile.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Profile.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/SupplierManagement.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SupplierManagement.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/SupplierManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SupplierManagement.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2h2xRQN1BdNT5AKnAZPBiPVfKee" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "203",
+    "git-widget-placeholder": "gihan",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/gihanpunarji/NetBeansProjects/RetaurantProject",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5518a5bf-9937-4c07-81ce-be570c6452e2" name="Changes" comment="" />
+      <created>1716805966181</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716805966181</updated>
+      <workItem from="1716805967679" duration="42000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
